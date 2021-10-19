@@ -1,0 +1,34 @@
+{
+  "name": "@twindigital/eslint-config",
+  "version": "1.0.0",
+  "description": "An eslint configuration that works for us.",
+  "license": "MIT",
+  "dependencies": {
+    "@typescript-eslint/parser": "^5.1.0"
+  },
+  "peerDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.1.0",
+    "eslint": ">= 8",
+    "eslint-import-resolver-node": "^0.3.6",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-jest": "^25.2.2",
+    "eslint-plugin-json": "^3.1.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.1.0",
+    "eslint-plugin-react": "^7.26.1",
+    "eslint-plugin-react-hooks": "^4.2.0"
+  },
+  "author": "Sean Kleinjung <sean@twindigital.io>",
+  "bugs": {
+    "url": "https://github.com/twin-digital/eslint-config/issues"
+  },
+  "files": [
+    "index.js"
+  ],
+  "homepage": "https://github.com/twin-digital/eslint-config",
+  "keywords": [
+    "config",
+    "eslint",
+    "eslintconfig"
+  ]
+}
