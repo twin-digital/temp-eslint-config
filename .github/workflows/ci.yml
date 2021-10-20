@@ -1,0 +1,60 @@
+name: Pull Request CI
+
+on: 
+  pull_request:
+    branches: 
+      - main
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+    - run: yarn install
+
+  # release: 
+  #   if: github.actor == 'phish108' || startsWith(github.actor, 'dependabot')
+
+  #   runs-on: ubuntu-latest
+
+  #   steps:
+  #     - id: contributor 
+  #       run: echo ::set-output name=release::minor
+  #       if: github.actor == 'phish108'
+
+  #     - id: bot
+  #       run: echo ::set-output name=release::patch
+  #       if: startsWith(github.actor, 'dependabot')
+
+  #     - uses: actions/checkout@v2
+  #       with:
+  #         ref: master
+
+  #     - run: |
+  #         git config --local user.email "action@github.com"
+  #         git config --local user.name "GitHub Action"
+  
+  #     - uses: phish108/autotag-action@1.1.37
+  #       id: tagger
+  #       env:
+  #         github-token: ${{ secrets.GITHUB_TOKEN }}
+  #         branch: master
+  #         bump: ${{ steps.contributor.outputs.release || steps.bot.outputs.release }}
+  #         dry-run: 'true'
+
+  #     - run: | 
+  #         npm --no-git-tag-version --allow-same-version version "${{ steps.tagger.outputs.new-tag }}"
+  #         git commit -m "version bump to ${{ steps.tagger.outputs.new-tag }}" -a
+
+  #     - name: Push changes
+  #       uses: ad-m/github-push-action@master
+  #       with:
+  #         github_token: ${{ secrets.GITHUB_TOKEN }}
+
+  #     - uses: phish108/autotag-action@1.1.37
+  #       env:
+  #         github-token: ${{ secrets.GITHUB_TOKEN }}
+  #         branch: master
+  #         bump: ${{ steps.contributor.outputs.release || steps.bot.outputs.release }}
+  #         with-v: true
