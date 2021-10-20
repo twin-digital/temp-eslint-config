@@ -1,5 +1,5 @@
 branches:
-  - name: main
+  - name: blah
     protection:
       enforce_admins: true
       required_linear_history: true
