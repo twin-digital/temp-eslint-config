@@ -1,0 +1,8 @@
+branches:
+  - name: main
+    protection:
+      enforce_admins: true
+      required_linear_history: true
+      # required_status_checks:
+      #   contexts: [ci]
+      #   strict: true
