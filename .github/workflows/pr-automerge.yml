@@ -21,7 +21,7 @@ jobs:
   # automatic branch deletion on merge doesn't appear to work when a PR is auto-merged
   # so this job does that explicitly
   delete-branch:
-    if: github.event.pull_request.action == 'closed' && github.event.pull_request.merged && github.event.pull_request.head.repo.full_name == github.repository
+    if: github.event.action == 'closed' && github.event.pull_request.merged == true && github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     steps:
       # checkout the PR source branch so we can delete it after merge
