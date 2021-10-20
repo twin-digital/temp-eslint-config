@@ -10,9 +10,17 @@ jobs:
     if: github.event.pull_request.action != 'closed' && github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     steps:
+      - name: Generate token
+        id: generate-token
+        uses: tibdex/github-app-token@v1
+        with:
+          app_id: ${{ secrets.DOPPEL_BOT_ID }}
+          private_key: ${{ secrets.DOPPEL_BOT_KEY }}
+          
+      # we enable automerge with an app token, so that workflows will trigger off of the merge
       - name: Enable automerge
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
           PR_URL: ${{ github.event.pull_request.html_url }}
         run: |
           gh pr merge --auto --squash "$PR_URL"
