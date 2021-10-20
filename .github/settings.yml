@@ -1,2 +1,15 @@
 repository:
   description: something cool this way comes
+
+branches:
+  - name: main
+    protection:
+      required_pull_request_reviews: null
+      required_status_checks: null
+        # Required. Require branches to be up to date before merging.
+        # strict: true
+        # Required. The list of status checks to require in order to merge into this branch
+        # contexts: []
+      enforce_admins: true
+      required_linear_history: true
+      restrictions: null
