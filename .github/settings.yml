@@ -1,8 +1,2 @@
-branches:
-  - name: blah
-    protection:
-      enforce_admins: true
-      required_linear_history: true
-      # required_status_checks:
-      #   contexts: [ci]
-      #   strict: true
+repository:
+  description: something cool this way comes
