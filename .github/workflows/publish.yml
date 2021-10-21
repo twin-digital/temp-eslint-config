@@ -1,0 +1,27 @@
+name: Publish
+
+on: 
+  push:
+    branches: [main]
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+
+    - name: "Bump Version"
+      id: version
+      uses: marier-nico/pr-bump@1.0
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        configuration: ./.github/pr-bump-config.json
+
+    - name: publish
+      if: steps.version.outputs.has_bump
+      run: |
+        yarn version --new-version "${{ steps.version.outputs.next_version }}"
+      shell: bash
