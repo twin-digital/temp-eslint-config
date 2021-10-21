@@ -1,0 +1,18 @@
+{
+  "base_branches": ["main"],
+  "categories": [
+    {
+      "labels": ["fix", "bug"],
+      "semver_part": "patch"
+    },
+    {
+      "labels": ["feature", "enhancement"],
+      "semver_part": "minor"
+    },
+    {
+      "labels": ["major", "breaking"],
+      "semver_part": "major"
+    }
+  ]
+}
+
