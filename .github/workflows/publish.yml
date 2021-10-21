@@ -14,7 +14,7 @@ jobs:
 
     - name: "Bump Version"
       id: version
-      uses: marier-nico/pr-bump@1.1.0
+      uses: marier-nico/pr-bump@v1.1.0
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
