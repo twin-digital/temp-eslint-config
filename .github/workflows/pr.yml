@@ -1,11 +1,11 @@
-name: On PR
+name: Pull Request
 
 on:
   pull_request:
     types: [edited, opened, reopened, synchronize]
 
 jobs:
-  automerge:
+  enable-automerge:
     # if a PR is from this repository (not a fork), enable automerge
     if: github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
@@ -26,10 +26,11 @@ jobs:
           gh pr merge --auto --squash "$PR_URL"
         shell: bash
 
-  lint:
+  validate-pr:
     runs-on: ubuntu-latest
     steps:
-    - uses: deepakputhraya/action-pr-title@master
+    - name: Lint title
+      uses: deepakputhraya/action-pr-title@master
       with:
         allowed_prefixes: 'feat:,fix:,build:,chore:,docs:,style:,refactor:,test:,revert:'
         prefix_case_sensitive: true
